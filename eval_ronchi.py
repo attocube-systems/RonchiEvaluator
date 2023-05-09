@@ -14,6 +14,7 @@ from scipy.signal import find_peaks
 import cv2
 
 from lib.evaluator import Evaluator
+from lib.FileReader import FileReader
 
 #%% Configuration of saving and plotting
 
@@ -35,9 +36,10 @@ DIR = os.getcwd()
 i=1
 
 for filename in os.listdir(DIR):
-    if filename.endswith(".npy"):
-        file = np.load(filename)
-
+    try:
+        file = FileReader.loadFile(filename)
+    except:
+        pass
 
 #%% Evaluate
 evaluate = Evaluator(pxSize, numPeaks, heightPeaks)

@@ -14,7 +14,7 @@ class Evaluator():
         self.numPeaks = numPeaks
         self.height = height
         self.FWHMRangeAccepted = FWHMRangeAccepted
-
+    
     def addLinesToImage(self, file):
         fileCopy = file
         m = self.get_direction(file)
