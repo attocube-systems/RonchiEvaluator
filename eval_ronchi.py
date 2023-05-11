@@ -62,7 +62,7 @@ if SAVE_FIGURE:
     plt.savefig('MeanCurve.pdf')
 
 #%% Show plot wih lines
-dataWithLines = evaluate.addLinesToImage(file)
+dataWithLines = evaluate.addLinesToImage(data)
 
 fig = plt.figure(2)
 pos = plt.imshow(dataWithLines,

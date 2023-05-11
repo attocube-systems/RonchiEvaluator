@@ -70,7 +70,7 @@ class FileReader():
 
         """
         data = np.load(fileLoc)
-        return data
+        return  np.array(data)
 
     # code for .png file
     #--------------------------------------------------------------------------
@@ -178,11 +178,13 @@ class FileReader():
 
         """
         with open(fileLoc, 'br') as f:
-            lineCount = -1
-            while lineCount < 14:
-                lineCount += 1
-                continue
-            dataLine = f.readline()
+            lines = []
+            line = f.readline()
+            while line != b'':
+                line = f.readline()
+                lines.append(line)
+            dataLine = lines[-2]
+            del lines
             length = 4
             byte = dataLine[:length]
             i=length
