@@ -35,15 +35,18 @@ heightPeaks = 0.8 # approx. value, maybe play around a bit
 DIR = os.getcwd()
 i=1
 
+reader = FileReader()
 for filename in os.listdir(DIR):
+    if filename.endswith('.npy'):
+        file = np.load(filename)
     try:
-        file = FileReader.loadFile(filename)
+        header, data = reader.loadFile(filename)
     except:
         pass
 
 #%% Evaluate
 evaluate = Evaluator(pxSize, numPeaks, heightPeaks)
-HalfMaxes, gausses, meanCurve = evaluate.evaluate(file)
+HalfMaxes, gausses, meanCurve = evaluate.evaluate(data)
 
 #%% Plot
 x = np.arange(-len(meanCurve)/2, len(meanCurve)/2)*pxSize

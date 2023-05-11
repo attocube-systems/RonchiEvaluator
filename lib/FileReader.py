@@ -26,7 +26,7 @@ class FileReader():
             header, data2D = self.loadPNGFile(fileLoc)
         
         if fileLoc.endswith(".npy"):
-            header, data2D = self.readDataFromNPYFile(fileLoc)
+            header, data2D = self.loadNPYFile(fileLoc)
             
         return header, data2D
     
@@ -70,7 +70,7 @@ class FileReader():
 
         """
         data = np.load(fileLoc)
-        return np.array(data)
+        return data
 
     # code for .png file
     #--------------------------------------------------------------------------
