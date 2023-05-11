@@ -37,8 +37,6 @@ i=1
 
 reader = FileReader()
 for filename in os.listdir(DIR):
-    if filename.endswith('.npy'):
-        file = np.load(filename)
     try:
         header, data = reader.loadFile(filename)
     except:
